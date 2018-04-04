@@ -14,7 +14,7 @@ tags: []
 [余声赞 - dvlp123456](https://dvlp123456.github.io/)
 [匡利金 - kuanglijin](https://kuanglijin.github.io)
 [童长钱 - tongchangqian](https://tongchangqian.github.io/)
-[黄涛 - flsboy](https://flsboy.github.io.git)
+[黄涛 - flsboy](https://flsboy.github.io/)
 [薛玉博 - xueyb0911](https://xueyb0911.github.io/)
 [卢文才 - luwc1227](https://luwc1227.github.io/)
 [杨新才 - yxc110](https://yxc110.github.io/)
