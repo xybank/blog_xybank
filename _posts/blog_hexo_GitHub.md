@@ -19,21 +19,21 @@ description: 搭建博客参考教程
 
 安装好 Nodejs 后，就可以安装 hexo 框架了。
 
-- 1.首先新建一个文件夹（涉及到代码的文件夹，请大家务必不要用中文），用于存放 hexo 框架，我这边以 D:\work\hexo 为例。
+- 1.首先新建一个文件夹（涉及到代码的文件夹，请大家务必不要用中文），用于存放 hexo 框架，我这边以 `D:\work\hexo` 为例。
 
-- 2.打开 CMD 命令窗口，cd 进入 hexo 文件夹，输入以下命令安装 hexo ：
+- 2.打开 CMD 命令窗口，cd 进入 `hexo` 文件夹，输入以下命令安装 hexo ：
 
 ``` bash
 npm install hexo-cli -g
 ```
 
-- 3.安装完成后，输入以下命令生成博客工程（文件夹），这边工程先命名为 blog ：
+- 3.安装完成后，输入以下命令生成博客工程（文件夹），这边工程先命名为 `blog` ：
 
 ``` bash
 hexo init blog
 ```
 
-- 4.进入工程 blog 文件夹：
+- 4.进入工程 `blog` 文件夹：
 
 ``` bash
 cd blog
@@ -41,7 +41,7 @@ cd blog
 
 ## 三.写文章
 
-安装完成后，可以看到 blog 目录下有一堆文件和文件夹，
+安装完成后，可以看到 `blog` 目录下有一堆文件和文件夹，
 
 ![Folder](/img/hexo/folder.jpg)
 
@@ -53,9 +53,9 @@ themes 是存放博客主题的文件夹；
 
 public 文件夹中存放自动生成的网站代码。
 
-知道这些就可以开始写博客了，可以看到 \source\_posts 下有一个默认的文档，就是一篇默认的博客。
+知道这些就可以开始写博客了，可以看到 `\source\_posts` 下有一个默认的文档 helloworld ，就是一篇默认的博客。
 
-- 1.新建一篇博客，在 D:\work\hexo\blog 目录下，输入以下命令会在 D:\work\hexo\blog\source\_posts 中生成一个 .md 后缀的 MarkDown 文件：
+- 1.新建一篇博客，在 `D:\work\hexo\blog` 目录下，输入以下命令会在 `D:\work\hexo\blog\source\_posts` 中生成一个 .md 后缀的 MarkDown 文件：
 
 ``` bash
 hexo new "文章标题"
@@ -63,9 +63,9 @@ hexo new "文章标题"
 
 - 2.在生成的文件中写博客，一般的文本编辑器都可以编写 MarkDown 文档；
 
-- 3.写完博客后，输入以下命令就可以在 public 目录下，自动生成静态的博客网站代码：
+- 3.写完博客后，输入以下命令就可以在 `public` 目录下，自动生成静态的博客网站代码：
 
-``` git
+``` bash
 hexo generate
 或
 hexo g
@@ -87,7 +87,7 @@ hexo server
 
 - 2.克隆 GitHub 代码仓库到本地，找个合适的文件夹放置网站代码：
 
-``` git
+``` bash
 git clone https://github.com/XXX/XXX.github.io.git
 ```
 
@@ -95,9 +95,9 @@ https://github.com/XXX/XXX.github.io.git 是代码仓库地址，获取方式如
 
 ![GitHub](/img/hexo/GitHub_3.jpg)
 
-- 3.上传博客网站代码。前面写完文章，运行命令生成的网站代码都在 public 文件夹中，复制 public 目录下的所有文件，粘贴到上一步的代码仓库（XXX.github.io文件夹）中。提交代码，即在代码仓库文件夹中，右键 Git Bash Here，依次执行以下命令：
+- 3.上传博客网站代码。前面写完文章，运行命令生成的网站代码都在 public 文件夹中，复制 public 目录下的所有文件，粘贴到上一步的代码仓库（`XXX.github.io` 文件夹）中。提交代码，即在代码仓库文件夹中，右键 Git Bash Here，依次执行以下命令：
 
-``` git
+``` bash
 git add . // 添加修改
 git commit -m "备注" // 提交
 git push origin master // 上传到GitHub代码库
@@ -115,22 +115,22 @@ git push origin master // 上传到GitHub代码库
 
 以此博客的主题 [Maupassant](https://github.com/tufu9441/maupassant-hexo) 为例：
 
-- 1.克隆主题到 themes 文件夹中：
+- 1.克隆主题到 `themes` 文件夹中：
 
-``` git
+``` bash
 git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant
 ```
 
 - 2.按照文档要求，安装插件：
 
-``` git
+``` bash
 npm install hexo-renderer-pug --save
 npm install hexo-renderer-sass --save
 ```
 
-- 3.修改博客 hexo 目录下的 _config.yml 文件：将 theme 项的 landscape 改为 maupassant。这里提示下，_config.yml 中还有博客的其他配置，可以按需更改。
+- 3.修改博客 hexo 目录下的 `_config.yml` 文件：将 theme 项的 landscape 改为 maupassant。这里提示下，`_config.yml` 中还有博客的其他配置，可以按需更改。
 
-- 4.配置主题。主题文件夹中也有一个 _config.yml 文件，这个是主题里相关的配置，一般主题都会有配置文档可以参考。
+- 4.配置主题。主题文件夹中也有一个 `_config.yml` 文件，这个是主题里相关的配置，一般主题都会有配置文档可以参考。
 
 当前博客的配置参考: [下载](/download/blog_onfig.rar)
 
@@ -138,11 +138,11 @@ npm install hexo-renderer-sass --save
 
 RSS就是提供接口出来，让别人可以订阅你的博客。hexo 有对应相关的[插件](https://github.com/hexojs/hexo-generator-feed)。输入以下命令安装插件：
 
-```
+``` bash
 npm install hexo-generator-feed --save
 ```
 
-在博客的配置文件 _config.yml 里添加如下配置，：
+在博客的配置文件 `_config.yml` 里添加如下配置，：
 
 ```
 feed:
@@ -155,7 +155,7 @@ feed:
   content_limit_delim: ' '
 ```
 
-编译之后，public 根目录下会生成 atom.xml 文件，这就说明成功了。另外，一般主题都会默认配置好 RSS 文件的路径，如果没有，则在主题的配置文件里填上即可。
+编译之后，`public` 根目录下会生成 `atom.xml` 文件，这就说明成功了。另外，一般主题都会默认配置好 RSS 文件的路径，如果没有，则在主题的配置文件里填上即可。
 
 ## 七.404网页
 
@@ -163,7 +163,7 @@ feed:
 
 在 source 下新建一个 404.html 或 404.md 文件，把以下代码复制进去：
 
-``` html
+```
 <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homePageUrl="/" homePageName="回到我的主页"></script>
 ``` 
 
