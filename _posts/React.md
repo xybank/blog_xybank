@@ -71,7 +71,7 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js �
 **第一步：下载安装文件**
 
 下载nodejs，官网：<http://nodejs.cn/download/>，下载node-v5.3.0-x64.msi(Mac系统下载node-v5.3.0.pkg)，如下图：
-![![img](/img/node_download.png)](/img/node_download.png)
+![![img](/img/lizd/node_download.png)](/img/node_download.png)
 
 **第二步：Node.js安装**
 
@@ -95,7 +95,7 @@ npm -v
 
 ## 什么是Webpack
 
-![![img](/img/what-is-webpack.png)](/img/what-is-webpack.png)
+![![img](/img/lizd/what-is-webpack.png)](/img/what-is-webpack.png)
 
 事实上它是一个打包工具，而不是像RequireJS或SeaJS这样的模块加载器，通过使用Webpack，能够像Node.js一样处理依赖关系，然后解析出模块之间的依赖，将代码打包。
 
