@@ -2,6 +2,7 @@
 title: Android MVP设计架构学习
 date: 2018-04-11 15:05:00
 tags: [Android,MVP,设计架构]
+categories: 黄涛
 description: 本文只研究MVP设计架构基础版，后续由各大神扩展的升级版以后研究
 ---
 
