@@ -1,4 +1,11 @@
-# lua数据结构table的键值存取过程源码分析
+---
+title: lua数据结构table的键值存取过程源码分析
+date: 2018-04-20
+tags: [lua]
+categories: 赖钧
+description: table的键值存取源码分析
+---
+
 ##一、相关数据结构定义
 ###1、Table结构定义
 ``` c
