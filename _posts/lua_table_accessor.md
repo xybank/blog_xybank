@@ -6,8 +6,8 @@ categories: 赖钧
 description: table的键值存取源码分析
 ---
 
-##一、相关数据结构定义
-###1、Table结构定义
+## 一、相关数据结构定义
+### 1、Table结构定义
 ``` c
 typedef struct Table {
   CommonHeader;
@@ -22,7 +22,7 @@ typedef struct Table {
 } Table;
 ```
 可以看出array和node作为存储数据的两种结构，当table以整型作为key时,会用array来存储，其他数据类型key会用node来存储。sizearray作为数组的长度，2的lsizenode次方作为哈希表的长度。
-###2、TValue结构定义
+### 2、TValue结构定义
 ``` c
 /*
 ** Union of all Lua values
@@ -42,7 +42,7 @@ typedef struct lua_TValue {
 ```
 TValue是一个结构体，里面是TValuefields，它由一个宏定义完成，包括Value和一个int值。 tt用于表示lua的基本数据类型，Value是一个联合体,可以是lua所支持的数据类型中的任意一种。
 
-###3、Node结构定义
+### 3、Node结构定义
 ``` c
 typedef struct Node {
   TValue i_val;
@@ -59,8 +59,8 @@ typedef union TKey {
 ```
 Node是key-value对的结构，主要是TKey结构,是一个union，所以TKey的大小就是nk的大小，从TValue的定义可知TValue和TValuefields同一个结构，所以tvk和nk的TValuefields都表示键值。struct Node *next这个指针指向了下一个冲突(哈希碰撞)的node。
 
-##二、键值存取过程
-###1、键值的取值
+## 二、键值存取过程
+### 1、键值的取值
 ``` c
 const TValue *luaH_get (Table *t, const TValue *key) {
   switch (ttype(key)) {
@@ -151,7 +151,7 @@ static Node *mainposition (const Table *t, const TValue *key) {
 }
 ```
 可以看出，此函数根据key值的类型选择不同的hash函数进行计算节点存储主位置
-###2、键值的存值
+### 2、键值的存值
 ``` c
 TValue *luaH_set (lua_State *L, Table *t, const TValue *key) {
   const TValue *p = luaH_get(t, key);
