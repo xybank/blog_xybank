@@ -36,7 +36,7 @@ ext {
 ```
 
 ### 2、架构展示
-![](img/pl/project_structure.png)
+![](/img/pl/project_structure.png)
 ### 3、关键模块解析
 **RxHelper**：是一个Rxjava的辅助类，主要提供线程切换等方法。
 ```
