@@ -7,6 +7,8 @@ categories: 洪宇杰
 
 > 很多app(如淘宝、美团等)在启动图加载完毕后，还会显示几秒的广告，一般都有个跳过按钮可以跳过这个广告，有的app在点击广告页之后还会进入一个广告页面，点击返回进入首页。
 
+<!--more-->
+
 ## 思路
 ![AppStar](http://p6dtp90fb.bkt.clouddn.com/AppStar.png)
 
