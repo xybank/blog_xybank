@@ -75,7 +75,8 @@ run.js除了加载一个模块之外没有进行任何操作，试着运行一�
 
 #### 1.5、模块化下的作用域
 主要关注点在**this**上。  
-Node和javaScript中的this指向上有一些区别，其中Node控制台和脚本文件的策略不尽相同。对于浏览器中的javaScript来说，无论是在脚本还是在浏览器控制台中，其this的指向是一致的，然Node并非这样。
+Node和javaScript中的this指向上有一些区别，其中Node控制台和脚本文件的策略不尽相同。
+对于浏览器中的javaScript来说，无论是在脚本还是在浏览器控制台中，其this的指向是一致的，然Node并非这样。
 1. 控制台中的this
 
 ``` nodejs
@@ -202,14 +203,11 @@ req.on("end",fiunction(){
 });
 ```   
 
-```
-上面代码使用+=来拼接上传的数据流，这个过程包含了一个隐式的编码转换。  
-body += chunk 相当于 body+=chunk。toString()，当上传的字符全是英文字符的时候固然没有问题，但如果包含中文或者其他语言，由于toString方法默认使用UTF-8编码，这个时候就可能出现乱码。
-```   
+*上面代码使用+=来拼接上传的数据流，这个过程包含了一个隐式的编码转换。  
+body += chunk 相当于 body+=chunk。toString()，当上传的字符全是英文字符的时候固然没有问题，  但如果包含中文或者其他语言，由于toString方法默认使用UTF-8编码，这个时候就可能出现乱码。*
 
-举个例子：首先构造一个中文字符串，并保存为test.txt      
-八百标兵奔北坡，北坡炮兵并排跑。炮兵排把标兵碰，标兵怕碰炮兵炮。
-
+**举个例子**：首先构造一个中文字符串，并保存为test.txt      
+*八百标兵奔北坡，北坡炮兵并排跑。炮兵排把标兵碰，标兵怕碰炮兵炮。*
 ``` node.js
 var rs =require("fs").createReadStream("test.txt",{highWaterMark :10});
 var data = "";
@@ -304,8 +302,8 @@ fs.writeFile("foo.txt", "你好", { flag: "a", encoding: "UTF-8" }, function (er
 ```  
 3. **fs.stat(path,callback)**  
 stat方法通常用来获取3文件状态。  
-通常开发者可以再调用opne(),read(),或者write方法之前调用fs.stat方法，用来判断文件是否存在。  
-    
+通常开发者可以再调用opne(),read(),或者write方法之前调用fs.stat方法，用来判断文件是否存在。
+
 ``` node.js
 var fs = require("fs");
 fs.stat("test.txt",function(err,result){
