@@ -59,7 +59,7 @@ System.out.println("2:" + personSR.get());
 SoftReference 可以和 ReferenceQueue 一起使用。创建 SoftReference 的时候将 ReferenceQueue 传入 SoftReference 的构造方法。当 SoftReference 所管理的对象被回收的时候，SoftReference 就会被放到 ReferenceQueue 中。
 
 ``` java
-int COUNT = 8777180;
+int COUNT = 8777180; // 根据 JVM 内存调整 
 ReferenceQueue<Person> queue = new  ReferenceQueue<Person>();
 SoftReference<Person> personSR = new SoftReference<Person>(new Person(),queue);
 System.gc();
