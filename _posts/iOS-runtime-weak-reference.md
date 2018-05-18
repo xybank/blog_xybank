@@ -171,7 +171,8 @@ class StripedMap {
     }
 
  public:
-    T& operator[] (const void *p) { //c++语法,重载[]操作符,所以&SideTables()[newObj]调用会进入此方法
+    T& operator[] (const void *p) { 
+    //c++语法,重载[]操作符,所以&SideTables()[newObj]调用会进入此方法
         return array[indexForPointer(p)].value; 
     }
     ......    
@@ -278,7 +279,7 @@ struct weak_table_t {
     }
 };
 ~~~
-可以看出weak_entry_t主要有两个成员referent和一个有两个结构组成的union。referent时DisguisedPtr类型，用来接收经过伪装(强转为unsigned long类型,防止内存查看工具查看)的弱引用对象的地址。而referrers或者inline_referrers用来存储弱引用指针,从WEAK_INLINE_COUNT和REFERRERS_OUT_OF_LINE宏注解可知，当weak引用数量少于等于4个时候时存储在inline_referrers数组，大于就存储在referrers，后面会看到原理。
+可以看出weak_entry_t主要有两个成员,referent和一个有两个结构体组成的union。referent时DisguisedPtr类型，用来接收经过伪装(强转为unsigned long类型,防止内存查看工具查看)的弱引用对象的地址。而referrers或者inline_referrers用来存储弱引用指针,从WEAK_INLINE_COUNT和REFERRERS_OUT_OF_LINE宏注解可知，当weak引用数量少于等于4个时候时存储在inline_referrers数组，大于就存储在referrers，后面会看到原理。
 
 感觉有点跑远了，接着回到storeWeak函数的注解2处代码
 
@@ -301,7 +302,7 @@ if (haveNew) {
     }
 ~~~
 
-调用weak_register_no_lock方法，传入weak_table，引用对象newObj,和弱引用指针地址location。方法内部实现引用对象和弱引用指针的存储。如果成功就在refcount table设置一个标志位，最后弱引用指针location指向来newObj。
+调用weak_register_no_lock方法，传入weak_table，引用对象newObj,和弱引用指针地址location。方法内部实现引用对象和弱引用指针的存储。如果成功就在refcount table设置一个标志位，最后弱引用指针location指向了newObj指针地址。
 
 weak_register_no_lock函数实现
 
@@ -368,7 +369,7 @@ weak_register_no_lock(weak_table_t *weak_table, id referent_id,
     return referent_id;
 }
 ~~~
-方法内部调用对引用对象进行了空和存活判断，然后调用weak_entry_for_referent函数进行弱表的entry(对象地址和弱引用指针存储的结构)查找，如果找到就把软引用添加进entry，否则就创建一个entry并加入到weak_table。
+方法内部调用对引用对象进行了空和存活判断，然后调用weak_entry_for_referent函数进行弱表的entry(对象地址和弱引用指针存储的结构)查找，如果找到就把弱引用添加进entry，否则就创建一个entry并加入到weak_table。
 
 weak_entry_for_referent函数实现
 
@@ -409,7 +410,7 @@ weak_entry_for_referent(weak_table_t *weak_table, objc_object *referent)
 ~~~
 首先对weak_entries数组判空，然后进行对象指针的hash计算并与weak_table的mask进行&操作，从获取数组遍历开始的index下标。后面通过while循环解决hash碰撞。
 
-已存在entry添加弱引用函数append_referrer实现
+已存在entry时添加弱引用函数append_referrer实现
 
 ~~~ c
 /** 
@@ -523,7 +524,7 @@ static void weak_entry_insert(weak_table_t *weak_table, weak_entry_t *new_entry)
     }
 }
 ~~~
-函数实现也同通过对引用对象指针进行hash后与weak_table->mask做&
+函数实现也是通过对引用对象指针进行hash后与weak_table->mask做&
 运算计算出weak_entries数组下标，通过while循环解决hash冲突，最后把entry存储在下标为index的weak_entries数组空间。
 
 ### weak引用的存储过程总结：
