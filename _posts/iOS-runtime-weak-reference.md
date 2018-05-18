@@ -3,7 +3,7 @@ title: runtime的weak属性现实
 date: 2018-05-15 16:31:12
 tags:[iOS]
 categories: 赖钧
-description: 本文主要描述weak引用的存储和销毁过程
+description: 本文主要描述weak引用的存储过程
 ---
 
 ### weak属性赋值时的方法调用过程
@@ -530,4 +530,5 @@ static void weak_entry_insert(weak_table_t *weak_table, weak_entry_t *new_entry)
 引用对象地址通过移位异或求余等操作计算出下标index，通过index取到一个SideTable类型的table(这个table内部包含存储弱引用的weak_table),弱引用和引用对象组成weak_entry_t类型的结构存储在weak_table里面weak_entry_t结构的weak_entries数组，数组存放的下标通过对引用对象地址进行hash运算后得出。当一个引用对象对应多个弱引用时，多个弱引用存储在weak_entry_t结构里面的referrers或inline_referrers。
 
 
+[runtime源码下载连接](https://opensource.apple.com/source/objc4/)
 
