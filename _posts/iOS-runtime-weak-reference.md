@@ -1,7 +1,7 @@
 ---
 title: runtime的weak属性现实
 date: 2018-05-15 16:31:12
-tags:[iOS]
+tags: [iOS]
 categories: 赖钧
 description: 本文主要描述weak引用的存储过程
 ---
