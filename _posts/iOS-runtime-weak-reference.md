@@ -29,7 +29,7 @@ description: 本文主要描述weak引用的存储过程
 
 ~~~
 
-![](../img/laijun/weak_reference/image1.png)
+![](/img/laijun/weak_reference/image1.png)
 可以看出weak引用赋值的时候方法调用时这样：objc_storeWeak(NSObject.mm)-->storeWeak(NSObject.mm)-->weak_register_no_lock(objc-weak.mm)，那应该weak引用的存储就应该是在weak_register_no_lock这个方法
 
 objc_storeWeak方法
