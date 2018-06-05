@@ -1,6 +1,6 @@
 ---
 title: bootstrap使用总结
-date: 2018-05-26 22:05:00 
+date: 2018-06-04 22:05:00 
 tags: [bootstrap] 
 categories: 甘明阳
 description: 记录bootstrap的一些常用内容使用
