@@ -1,9 +1,9 @@
 ---
-title: 浅谈Serializable与Parcelabel
+title: 浅谈Serializable与Parcelable
 date: 2018-06-06 12:00:00
-tags: [Android,Serializable,Parcelabel]
+tags: [Android,Serializable,Parcelable]
 categories: 彭连
-description: 简要介绍序列化以及反序列化，以及两种实现方式Serializable和Parcelabel还有二者的区别
+description: 简要介绍序列化以及反序列化，以及两种实现方式Serializable和Parcelable还有二者的区别
 ---
 
 ## 序列化与反序列化的由来
@@ -114,9 +114,9 @@ public class ParcelableType implements Parcelable {
  ....
 }  
 ```
-*Parcel*内部包装了可序列化的数据，可在Binder中自由的传递。从以上代码可以看出，序列化过程包含序列化、反序列化以及功能描述。序列化由*writeToParc*方法完成，最终通过Parcel的一系列write方法完成；反序列化通过*CREATOR*来完成，其内部标识了如何创建序列化对象以及数组，并通过Parcel的一系列read方法来完成反序列化的过程；内容描述功能由*describeContents*方法完成，几乎所有的情况这个方法都返回0，只有当前对象存在文件描述符时，此方法返回1。
+*Parcel*内部包装了可序列化的数据，可在Binder中自由的传递。从以上代码可以看出，序列化过程包含序列化、反序列化以及功能描述。序列化由*writeToParcel*方法完成，最终通过Parcel的一系列write方法完成；反序列化通过*CREATOR*来完成，其内部标识了如何创建序列化对象以及数组，并通过Parcel的一系列read方法来完成反序列化的过程；内容描述功能由*describeContents*方法完成，几乎所有的情况这个方法都返回0，只有当前对象存在文件描述符时，此方法返回1。
 ## 总结
-对于Android开发来说，*Parcelabel*与*Serializable*都能实现序列化并且都可用于Intent之间的数据传递，那么二者该如何选取呢？*Serializable*是java的序列化接口，其使用起来简单但是开销很大，序列化与反序列化过程需大量的IO操作。而*Parcelable*是Android的序列化方式，因此更适用于Android平台，它的缺点就是使用起来麻烦一点，但是效率更高，是Android推荐的序列化方法，我们应该首选*Parcelable*。*Parcelable*主要用在内存序列化上，通过*Parcelable*将对象序列化到存储设备或者将对象序列化后通过网络传输也都是可以的，但是这个过程会稍显复杂，因此在这两种情况建议大家使用*Serializable*。
+对于Android开发来说，*Parcelable*与*Serializable*都能实现序列化并且都可用于Intent之间的数据传递，那么二者该如何选取呢？*Serializable*是java的序列化接口，其使用起来简单但是开销很大，序列化与反序列化过程需大量的IO操作。而*Parcelable*是Android的序列化方式，因此更适用于Android平台，它的缺点就是使用起来麻烦一点，但是效率更高，是Android推荐的序列化方法，我们应该首选*Parcelable*。*Parcelable*主要用在内存序列化上，通过*Parcelable*将对象序列化到存储设备或者将对象序列化后通过网络传输也都是可以的，但是这个过程会稍显复杂，因此在这两种情况建议大家使用*Serializable*。
 
 
 参考书籍：《Android开发艺术探索》
