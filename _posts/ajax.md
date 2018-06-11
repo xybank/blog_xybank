@@ -8,7 +8,7 @@ tags:
 
 异步：请求通过事件触发->服务器处理（这是浏览器仍然可以作其他事情）->处理完毕 
 
-# open方法的几个参数
+##### open方法的几个参数
 
 .open (http-method, url, async, userID, password)
 
