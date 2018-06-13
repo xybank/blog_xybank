@@ -58,7 +58,9 @@ AIDL是应用接口定义语言，是用于实现进程间通信的，主要分�
 
 ### Messeneger
 Messenger可以翻译为信使，通过它可以在不同进程间传递Message对象，将数据封装成Message，就可以轻松实现进程间传递了。Messenger是一种轻量级的IPC方案，它的底层实现是aidl,它是串行执行请求的，不能并发处理多个客户端的请求，所以它只适用于一些非高并发请求的场景。如下是它的实现流程图：
+
 ![](/img/pl/ipc_messenger.png)
+
 ### 使用ContentProvider
 ContentProvider是内容提供者，对于Android开发者来说这个应该不陌生，它是四大组件之一，它的搭档是ContentResolver(内容解析者)。底层是基于binder实现的，Android系统帮我们做好了封装，我们可以很简单的就能实现IPC。实现一个ContentProvider需要继承ContentProvider类，并且重写CRUD四个方法，并对其进行注册设置标识，其它应用或者进程通过ContentResolver与标识对其进行解析，这就实现了进程间的通信了。当然ContentProvider存储的媒介是多样的，可以是数据库、文件或者其它。
 ### 使用Socket
@@ -66,7 +68,9 @@ Socket也成为“套接字”，是网络通信中的概念，分为流式套�
 
 ## 总结
 上面介绍的IPC方式多种多样，对于开发者来说选择合适的IPC方式是相当重要的，如下图：
+
 ![](/img/pl/ipc_difference.png)
+
 当然Android的IPC岂是一篇博客能够讲完的，这里只是对其作了大致的介绍，对于binder、aidl以及Messenger等都没有做深入研究，有兴趣的同学可以阅读对应的源码进行研究探索。
 
 
