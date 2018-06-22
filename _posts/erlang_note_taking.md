@@ -5,9 +5,8 @@ tags: erlang
 categories: 李关浩
 ---
 
-# erlang 随手记
 
-erlang进程数量
+查看erlang进程数量
 
 ```
 (a@localhost)12>erlang:length(erlang:processes()).
@@ -15,7 +14,7 @@ erlang进程数量
 (a@localhost)13>
 ```
 
-erlang内存使用情况
+查看erlang内存使用情况
 
 ```
 (a@localhost)11> erlang:memory().
