@@ -1,7 +1,9 @@
-
-| title | date | tags | categories |
-| --- | ---  | --- | --- |
-| erlang | 2018-06-22 10:55:28 | erlang | 李关浩 |
+---
+title: erlang随手记
+date: 2018-06-22 16:39:28
+tags: erlang
+categories: 李关浩
+---
 
 # erlang 随手记
 
