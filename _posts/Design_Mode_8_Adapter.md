@@ -30,6 +30,17 @@ public class Adaptee {
 }
 ```
 
+适配器：
+
+``` java
+public class Adapter extends Adaptee implements Target {
+    @Override
+    public void request() {
+        super.doSomething();
+    }
+}
+```
+
 或对象适配器：
 
 ``` java
