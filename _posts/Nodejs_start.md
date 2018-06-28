@@ -1,6 +1,6 @@
 ---
 title: Nodejs入门
-date: 2018-03-28 14:10:23
+date: 2018-06-28 14:10:23
 tags: [Nodejs]
 categories: 余声赞
 description: Nodejs简单入门
@@ -31,7 +31,7 @@ description: Nodejs简单入门
  + 不像Chrome中的console有window、document等dom和bom的对象;    
 
 ### （3）Node.js是一门基于ECMAScript开发的服务器端语言（php等也是服务器语言），提供了（前端JS没有的）很多拓展的对象。    
- 
+
  + 前端js：   
 1.ES原生对象：String,Number,Boolean,Math,Date,Error,Function,object,Array,RegExp...  
 2.BOM（浏览器模型）&DOM（文件对象模型）  
@@ -60,7 +60,7 @@ description: Nodejs简单入门
 
  + 1.交互模式—用于测试  
 读取用户的输入、执行运算、输出结果、继续下一个循环。如在命令行下的
- 
+
 + 2.脚本模式—用于开发  
 把要执行的所有js语句编写在一个独立的文件中，一次性的提交给nodejs处理。此文件可以没有后缀（默认就是js文件）  
 执行方法：node xx/xxx/xxx.js
@@ -367,13 +367,13 @@ Node.js的安装文件中，已经集成了npm
 #### 3.URL模块  
 
 提供了处理url中不同部分的相关操作               
-  
+
 - parse()      //解析出url的各个组成部分，参数2，可选，若为true，可以见查询字符串部分解析为对象  
 - format()     //将对象反向格式为url格式  
 - resolve()    //根据基地址和相对地址解析出目标地址，参数1，基地址；参数2，相对地址  
 
 #### 4.Path模块 
- 
+
 提供了对文件路径操作的方法  
 
 - parse()     //解析一个路径，参数为路径字符串  
@@ -512,7 +512,7 @@ http.Server对象的常用方法：
 第二个参数，http.ServerResponse对象，用于构建向客户端输出的响应消息数据。  
   
 #### 10.mysql模块 
- 
+
 方法：  
 
 - createConnection()  //创建一个mysql服务器的连接，该方法返回一个连接对象，该对象有一下常用方法：
