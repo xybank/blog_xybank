@@ -1,6 +1,6 @@
 ---
 title:  Navicate for Mysql的破解
-date: 2018-04-15 20:05:00 
+date: 2018-06-28 20:05:00 
 tags: [mysql] 
 categories: 甘明阳
 description: navcate从安装到使用一套讲解 
