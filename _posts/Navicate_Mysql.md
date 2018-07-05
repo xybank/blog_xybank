@@ -44,7 +44,7 @@ description: navcate从安装到使用一套讲解
 
 首先建立数据库users：
 
-![indow_mysql0](https://github.com/ganmyxh/ganmyxh.io/blob/master/img/window_mysql05.png?raw=true)
+![indow_mysql0](https://github.com/ganmyxh/ganmyxh.io/blob/master/img/window_mysql06.png?raw=true)
 
 建表，首先设置id为主键，点钥匙就可以取消主键
 
