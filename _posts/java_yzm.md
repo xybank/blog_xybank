@@ -83,20 +83,7 @@ description: java调用ECS短信服务api发送手机认证码
 好啦，所有的准备工作都已经完成，下面我们在java里面调用，按照注释修改即可，无需修改的地方不要动
 
 ```java
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
-import com.aliyuncs.http.MethodType;
-import com.aliyuncs.profile.DefaultProfile;
-import com.aliyuncs.profile.IClientProfile;
 
-
-//发送短信认证码
-public class Util_fsdx {
-    public static String get_code(String phone) throws ServerException, ClientException{
         //验证码
         String code = "123456";
     	//设置超时时间-可自行调整
@@ -137,7 +124,6 @@ public class Util_fsdx {
     		System.out.println("请求成功，验证码是" + code);
     	}
     	return code;
-	}
 ```
 
 #### 说明
