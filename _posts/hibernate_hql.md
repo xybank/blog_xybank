@@ -2,7 +2,7 @@
 title: hibernate里的HQL使用详解
 date: 2018-09-18 16:54:00 
 tags: [hibernate] 
-categories: java
+categories: 甘明阳
 description: 详细介绍hibernate里面查询语句HQL的使用
 ---
 
