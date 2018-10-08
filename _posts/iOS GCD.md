@@ -78,7 +78,7 @@ performSelector系方法确实比使用NSThread类进行多线程编程要简单
 
 在OS X和iOS的核心XNU内核在发生操作系统事件时（如每隔一定时间，唤起系统调用等情况）会切换执行路径。执行中路径的状态，例如CPU的寄存器等信息保存到各自专用的内存块中，从切换目标路径专用的内存中复原CPU寄存器等信息，继续执行切换路径的CPU命令列。这被称为“上下文切换”。
 
-由于使用多线程的程序可以在某个线程和其他线程之间反复多次进行切换上下文，且速度极快。看上去就好像1个CPU核能够并列地执行多个程序一样。在多个CPU的情况下就不是看上去像了，而是真的提供多个CPU核并行的执行多个线程。
+由于使用多线程的程序可以在某个线程和其他线程之间反复多次进行切换上下文，且速度极快。看上去就好像1个CPU核能够并列地执行多个程序一样。这称之为——“并发”。在多个CPU的情况下就不是看上去像了，而是真的提供多个CPU核并行的执行多个线程。
 
 这种利用多线程编程的技术就被称为“多线程编程”。
 
@@ -99,7 +99,7 @@ dispatch_async(queue, ^{
 
 Dispatch\_queue是执行处理的队列，队列按照先进先出的原则执行处理添加到队列中的任务。
 
-队列分两种，一种是等待现在执行中处理的串行队列(DISPATCH\_QUEUE\_SERIAL)，另一种是不等待现在执行处理的并行队列(DISPATCH\_QUEUE\_CONCURRENT)。
+队列分两种，一种是等待现在执行中处理的串行队列(DISPATCH\_QUEUE\_SERIAL)，另一种是不等待现在执行处理的并发队列(DISPATCH\_QUEUE\_CONCURRENT)。
 
 比较这两种队列
 
@@ -123,7 +123,7 @@ blk5
 blk6
 
 
-//并行队列
+//并发队列
 dispatch_async(queue, blk0);
 dispatch_async(queue, blk1);
 dispatch_async(queue, blk2);
@@ -132,7 +132,7 @@ dispatch_async(queue, blk4);
 dispatch_async(queue, blk5);
 dispatch_async(queue, blk6);
 
-//并行队列输出，由于并行执行处理的数量取决于当前的系统的状态，所以输出的结果不是顺序的。
+//并发队列输出，由于并发执行处理的数量取决于当前的系统的状态，所以输出的结果不是顺序的。
 blk1
 blk0
 blk2
@@ -142,7 +142,7 @@ blk4
 blk5
 
 ```
-XNU内核决定应当使用的线程数，并只生成所需的线程执行处理，线程都由XNU内核来管理。Concurrent Dispatch Queue中执行处理时，执行顺序会根据处理内容和系统状态发生改变。它不同于执行顺序固定的Serial Dispatch Queue。在不能改变执行的处理顺序或不想并行执行多个处理时使用。
+XNU内核决定应当使用的线程数，并只生成所需的线程执行处理，线程都由XNU内核来管理。Concurrent Dispatch Queue中执行处理时，执行顺序会根据处理内容和系统状态发生改变。它不同于执行顺序固定的Serial Dispatch Queue。在不能改变执行的处理顺序或不想并发执行多个处理时使用。
 
 ### 2.2 dispatch\_queue\_create
 
@@ -161,10 +161,10 @@ dispatch_queue_t queue = dispatch_queue_create("com.example.gcd.myqueue",NULL);
 
 虽然Serial Dispatch Queue 和 Concurrent Dispatch Queue受到系统资源的限制，但用dispatch\_queue\_create可以创建任意多个Dispatch Queue。
 
-当生成多个Serial Dispatch Queue是，各个Serial Dispatch Queue将并行执行。但是**一旦生成Serial Dispatch Queue并追加处理，系统对于Serial Dispatch Queue就只生成并使用一个线程**。如果创建2000个Serial Dispatch Queue就会有2000个线程生成。这样就会消耗大量的内存，引起大量的上下文切换，大幅度降低系统的响应性能。
+当生成多个Serial Dispatch Queue是，各个Serial Dispatch Queue将并发执行。但是**一旦生成Serial Dispatch Queue并追加处理，系统对于Serial Dispatch Queue就只生成并使用一个线程**。如果创建2000个Serial Dispatch Queue就会有2000个线程生成。这样就会消耗大量的内存，引起大量的上下文切换，大幅度降低系统的响应性能。
 **只在为了避免多线程编程问题之一——多个线程更新相同资源导致数据竞争时使用Serial Dispatch Queue。**
 
-当想并行执行不发生数据竞争等问题的处理时，使用Concurrent Dispatch Queue。而且**对于Concurrent Dispatch Queue来说，不管生成多少，由于XNU内核只使用有效管理的线程**，因此不会发生Serial Dispatch Queue的问题。
+当想并发执行不发生数据竞争等问题的处理时，使用Concurrent Dispatch Queue。而且**对于Concurrent Dispatch Queue来说，不管生成多少，由于XNU内核只使用有效管理的线程**，因此不会发生Serial Dispatch Queue的问题。
 
 从iOS6.0起，GCD对象就被纳入ARC的管理范畴，ARC程序中不再需要调用dispatch_release来释放GCD对象。
 
@@ -228,7 +228,7 @@ dispatch_set_target_queue(mySerialDispatchQueue, globalDispatchQueueBackground);
 ```
 dispatch\_set\_target\_queue函数的第一个参数是要变更优先级的Dispatch Queue，第二个是指定要使用的执行优先级相同的目标Dispatch Queue。但是如果要变更的Dispatch Queue指定了系统提供的Main Dispatch Queue和Global Dispatch Queue则不知道会出现什么情况，因此这些均不可指定。
 
-**用法：**将Dispatch Queue指定为dispatch\_set\_target\_queue的函数参数，不仅可以变更Dispatch Queue的执行优先级，还可以作为Dispatch Queue的执行阶层。如果在多个Serial Dispatch Queue中用dispatch\_set\_target\_queue函数指定目标为某一个Serial Dispatch Queue，那么原本应该并行执行的多个Serial Dispatch Queue，在目标Serial Dispatch Queue上只能同时执行一个处理
+**用法：**将Dispatch Queue指定为dispatch\_set\_target\_queue的函数参数，不仅可以变更Dispatch Queue的执行优先级，还可以作为Dispatch Queue的执行阶层。如果在多个Serial Dispatch Queue中用dispatch\_set\_target\_queue函数指定目标为某一个Serial Dispatch Queue，那么原本应该并发执行的多个Serial Dispatch Queue，在目标Serial Dispatch Queue上只能同时执行一个处理
 
 ### 2.5 dispatch\_after
 
