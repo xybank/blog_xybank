@@ -10,13 +10,13 @@ jstl全称jsp standard tag library，翻译成中文就是jsp标准标签库。�
 
 ##### `<c:out>`标签
 
-######引用
+###### 引用
 
 ```jsp
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 ```
 
-######基本使用
+###### 基本使用
 
 作用是用来输入信息的，例如下面输入hello world：
 
@@ -24,7 +24,7 @@ jstl全称jsp standard tag library，翻译成中文就是jsp标准标签库。�
 <c:out value="hello world"></c:out>
 ```
 
-######域对象变量
+###### 域对象变量
 
 ```java
 <c:out value="${abc}" default="没找到值"></c:out>
@@ -46,7 +46,7 @@ pageContext > request > session > application
 ${user1.name}
 ```
 
-######escapeXml
+###### escapeXml
 
 escapeXml属性表示是否解析跳过html标签，默认值为true
 
@@ -137,7 +137,7 @@ request.setAttribute("abc","行号");
 
 ##### `<c:forEach>`标签
 
-######替换for:each
+###### 替换for:each
 
 ```jsp
 <%
@@ -166,7 +166,7 @@ items表示去迭代的变量，相当于下面的list1，var表示迭代后赋�
     }
 ```
 
-######替换普通for循环
+###### 替换普通for循环
 
 例如打印1到10
 
