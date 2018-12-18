@@ -2,7 +2,7 @@
 title: mybaties总结
 date: 2018-12-18 16:54:00 
 tags: [mybaties] 
-categories: mybaties
+categories: 甘明阳
 description: 记录mybaties的使用
 ---
 
